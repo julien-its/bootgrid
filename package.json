@@ -17,7 +17,6 @@
     }
   ],
   "main": "jqueryBootgrid.js",
-  "target-dir":"julien-its/bootgrid",
   "files": [
     "jqueryBootgrid.js",
     "bootgrid.js"
