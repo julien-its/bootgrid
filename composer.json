@@ -1,0 +1,23 @@
+{
+  "name": "julien-its/bootgrid",
+  "type": "javascript es6 jquery plugin",
+  "description": "Table list loaded in ajax. Pagination, filters and order columns managed",
+  "keywords": [],
+  "license": "GPL-3.0+",
+  "authors":[
+    {
+      "name": "Julien IT Solutions",
+      "email":"contact@julien-gustin.be",
+      "homepage": "https://www.julien-gustin.be"
+    }
+  ],
+  "main": "jqueryBootgrid.js",
+  "target-dir":"julien-its/bootgrid",
+  "files": [
+    "jqueryBootgrid.js",
+    "bootgrid.js"
+  ],
+  "dependencies": {
+    "jquery": ">= 2.0.0"
+  }
+}
