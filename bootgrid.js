@@ -35,6 +35,7 @@ class Bootgrid {
         this.initPrevNextPage();
         this.initAutoSubmit();
         this.setSortDirectionIndicator();
+        this.initExport();
     }
 
     initHeaderToolTips()
@@ -348,6 +349,68 @@ class Bootgrid {
 
             $("tbody", $(self._element)).get(0).appendChild(tr);
         });
+    }
+
+    initExport()
+    {
+        const self = this;
+        $('.js-export', $(self._element)).click((e) => {
+            e.preventDefault();
+            const $link = $(e.currentTarget);
+            document.location.href = $link.data('export-url') + "?" + self.objectAsQueryString(self.getFormDataAsObject($('.form-data-adv-search', $(self._element)).get(0)));
+        });
+    }
+
+    setOrPush(target, val) {
+        var result = val;
+        if (target) {
+            result = [target];
+            result.push(val);
+        }
+        return result;
+    }
+
+    objectAsQueryString(obj, prefix) {
+        var str = [],
+            p;
+        for (p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                str.push((v !== null && typeof v === "object") ?
+                    serialize(v, k) :
+                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+        }
+        return str.join("&");
+    }
+
+    getFormDataAsObject(formElement) {
+        const self = this;
+        var formElements = formElement.elements;
+        var formParams = {};
+        var i = 0;
+        var elem = null;
+        for (i = 0; i < formElements.length; i += 1) {
+            elem = formElements[i];
+            switch (elem.type) {
+                case 'submit':
+                    break;
+                case 'radio':
+                    if (elem.checked) {
+                        formParams[elem.name] = elem.value;
+                    }
+                    break;
+                case 'checkbox':
+                    if (elem.checked) {
+                        formParams[elem.name] = self.setOrPush(formParams[elem.name], elem.value);
+                    }
+                    break;
+                default:
+                    formParams[elem.name] = self.setOrPush(formParams[elem.name], elem.value);
+            }
+        }
+        return formParams;
     }
 
 
