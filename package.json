@@ -1,6 +1,6 @@
 {
   "name": "julien-its-bootgrid",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Table list loaded with ajax. Pagination, filters and order columns managed",
   "main": "jqueryBootgrid.js",
   "repository": {
