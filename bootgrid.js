@@ -150,7 +150,7 @@ class Bootgrid {
             $(self._element).data('page', page-1);
             self.loadPage();
         })
-        $('.js-next-page').click((e) => {
+        $('.js-next-page', $(self._element)).click((e) => {
             e.preventDefault();
             let page = $(self._element).data('page');
             $(self._element).data('page', page+1);
