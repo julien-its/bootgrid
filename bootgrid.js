@@ -262,17 +262,18 @@ class Bootgrid {
 
     showHidePrevNextLinks(result)
     {
+        const self = this;
         if(result.page > 1){
-            $('.js-prev-page').show();
+            $('.js-prev-page', $(self._element)).show();
         }else{
-            $('.js-prev-page').hide();
+            $('.js-prev-page', $(self._element)).hide();
         }
         let end = (result.page) * result.rowCount;
 
         if(end < result.total){
-            $('.js-next-page').show();
+            $('.js-next-page', $(self._element)).show();
         }else{
-            $('.js-next-page').hide();
+            $('.js-next-page', $(self._element)).hide();
         }
     }
 
