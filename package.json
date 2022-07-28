@@ -1,6 +1,6 @@
 {
   "name": "julien-its-bootgrid",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Table list loaded with ajax. Pagination, filters and order columns managed",
   "main": "jqueryBootgrid.js",
   "repository": {
@@ -12,10 +12,10 @@
     "list",
     "table"
   ],
-  "authors":[
+  "authors": [
     {
       "name": "Julien IT Solutions",
-      "email":"contact@julien-gustin.be",
+      "email": "contact@julien-gustin.be",
       "homepage": "https://www.julien-gustin.be"
     }
   ],
@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/julien-its/bootgrid/issues"
   },
-  "homepage": "https://github.com/julien-its/bootgrid#readme"
+  "homepage": "https://github.com/julien-its/bootgrid#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "querystring": "^0.2.1"
+  }
 }

@@ -1,5 +1,5 @@
 /*
- Version: 2.0.6
+ Version: 2.0.7
   Author: Julien Gustin
  Website: https://julien-gustin.be
  */
@@ -363,20 +363,10 @@ class Bootgrid {
         });
     }
 
-    objectAsQueryString(obj, prefix) {
-        const self = this;
-        var str = [],
-            p;
-        for (p in obj) {
-            if (obj.hasOwnProperty(p)) {
-                var k = prefix ? prefix + "[" + p + "]" : p,
-                    v = obj[p];
-                str.push((v !== null && typeof v === "object") ?
-                    self.objectAsQueryString(v, k) :
-                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
-            }
-        }
-        return str.join("&");
+    objectAsQueryString(obj) {
+
+        const querystring = require('querystring');
+        return querystring.stringify(obj);
     }
 
     // **************************************************************
