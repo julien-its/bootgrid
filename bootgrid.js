@@ -1,5 +1,5 @@
 /*
- Version: 2.0.0
+ Version: 2.0.6
   Author: Julien Gustin
  Website: https://julien-gustin.be
  */
@@ -364,6 +364,7 @@ class Bootgrid {
     }
 
     objectAsQueryString(obj, prefix) {
+        const self = this;
         var str = [],
             p;
         for (p in obj) {
@@ -371,7 +372,7 @@ class Bootgrid {
                 var k = prefix ? prefix + "[" + p + "]" : p,
                     v = obj[p];
                 str.push((v !== null && typeof v === "object") ?
-                    objectAsQueryString(v, k) :
+                    self.objectAsQueryString(v, k) :
                     encodeURIComponent(k) + "=" + encodeURIComponent(v));
             }
         }
