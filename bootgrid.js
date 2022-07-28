@@ -5,6 +5,7 @@
  */
 
 import { Tooltip } from 'bootstrap';
+import FormToObject from "./formToObject";
 
 class Bootgrid {
 
@@ -358,17 +359,8 @@ class Bootgrid {
         $('.js-export', $(self._element)).click((e) => {
             e.preventDefault();
             const $link = $(e.currentTarget);
-            document.location.href = $link.data('export-url') + "?" + self.objectAsQueryString(self.getFormDataAsObject($('.form-data-adv-search', $(self._element)).get(0)));
+            document.location.href = $link.data('export-url') + "?" + self.objectAsQueryString(new FormToObject($('.form-data-adv-search', $(self._element)).get(0), false));
         });
-    }
-
-    setOrPush(target, val) {
-        var result = val;
-        if (target) {
-            result = [target];
-            result.push(val);
-        }
-        return result;
     }
 
     objectAsQueryString(obj, prefix) {
@@ -385,35 +377,6 @@ class Bootgrid {
         }
         return str.join("&");
     }
-
-    getFormDataAsObject(formElement) {
-        const self = this;
-        var formElements = formElement.elements;
-        var formParams = {};
-        var i = 0;
-        var elem = null;
-        for (i = 0; i < formElements.length; i += 1) {
-            elem = formElements[i];
-            switch (elem.type) {
-                case 'submit':
-                    break;
-                case 'radio':
-                    if (elem.checked) {
-                        formParams[elem.name] = elem.value;
-                    }
-                    break;
-                case 'checkbox':
-                    if (elem.checked) {
-                        formParams[elem.name] = self.setOrPush(formParams[elem.name], elem.value);
-                    }
-                    break;
-                default:
-                    formParams[elem.name] = self.setOrPush(formParams[elem.name], elem.value);
-            }
-        }
-        return formParams;
-    }
-
 
     // **************************************************************
     // Public methods
