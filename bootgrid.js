@@ -379,7 +379,7 @@ class Bootgrid {
                 var k = prefix ? prefix + "[" + p + "]" : p,
                     v = obj[p];
                 str.push((v !== null && typeof v === "object") ?
-                    serialize(v, k) :
+                    objectAsQueryString(v, k) :
                     encodeURIComponent(k) + "=" + encodeURIComponent(v));
             }
         }
