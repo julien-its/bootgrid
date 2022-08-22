@@ -1,5 +1,5 @@
 /*
- Version: 2.0.7
+ Version: 2.0.8
   Author: Julien Gustin
  Website: https://julien-gustin.be
  */
