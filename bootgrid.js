@@ -329,6 +329,11 @@ class Bootgrid {
                                 if(commandInfo.target != undefined){
                                     $(command).attr('target', commandInfo.target);
                                 }
+                                if(commandInfo.attr != undefined){
+                                    $.each(commandInfo.attr, (attrName, attrValue) => {
+                                        $(command).attr(attrName, attrValue);
+                                    })
+                                }
                                 rowCol.appendChild(command);
                             });
                             break;
